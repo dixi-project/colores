@@ -1,0 +1,1 @@
+[{"structure":{"name":"Colores","img":false,"pdf":false,"files":{"nf":0},"return":["color"],"views":null}},{"id":{"name":"Id"},"name":{"name":"Nombre"},"color":{"name":"Color"},"pantone":{"name":"Pantone"},"year":{"name":"A\u00f1o"}}]
