@@ -18,7 +18,7 @@ En este archivo se debera configurar las rutas y accesos a la base de datos
 
 5. En cuya ruta habra una carpeta por diseño nuevo implementado ejemplo diseño 1 estaria en //<domain>/<directory>/design/1
 
-    Nota: Aqui la ruta para descargar el diseños que ya se encuentran implmentados y que se pueden utilizar 
+    Nota: Aqui la ruta para descargar el diseño que ya se encuentran implmentados y que se pueden utilizar 
 
     https://framework.dixi-project./design/1.zip
 
@@ -47,49 +47,34 @@ class ControllerMicontrolernuevo extends Controller {
 }
 ?>
 ```
+7. Sobre El API
 
-# en-Installation
+Los servicios son los solicitados 
 
-1. Configure the ./protected/config/data.php file
+GET /colores
 
-In this file you must configure the routes and accesses to the database
+GET /colores/:id
 
-2. Give permission to write to the structure folder located at // <domain> / <directory> / includes / structure
+POST /colores
 
-3. Run the //<domain>/<directory>/includes/ajax/createStructure.php
+PUT /colores/:id
 
-4. For the design there must be a folder called design in the following path // <domain> / <directory> / design
+DELETE /colores/:id
 
-5. In whose path there will be a folder by new design implemented example design 1 would be in // <domain> / <directory> / design / 1
+Solo que como url pueden pasarse 2 parametro extras para la paginación
 
-    > Note: Here is the path to download 3 designs that are already implemented and that can be used
+ejemplo en el local
 
-    https://framework.dixi-project./design/1.zip
+http://localhost/colores/v1/colores?items=3&page=3
 
-6. To create a new module you will have to add a file in the following path // <domain> / <directory> / protected / controller / with the following format
+Donde ITEMS es para el número de registros  default = 6
+Donde PAGE si queremos un número de página  default = 1
 
-    Controller<NombredelControler>.php 
-    Example if we wanted to create a route called
-    //<domain>/<directory>/micontrolernuevo
-    ControllerMicontrolernuevo.php
+Losvalores por default son 
 
-    example:
+para el typo lo agregure como paramtro de tipo header solo para usar headers 
 
-```
-<?php
-class ControllerMicontrolernuevo extends Controller {
-    function __construct($view, $conf, $var, $acc) {
-        parent::__construct($view, $conf, $var, $acc);
-    }
-        public function main() {
-                foreach ($this->var as $key => $value) {
-            $this->data[$key] = $value;
-        }
-        indexModel::bd($this->conf)->controlAcceso(["1","2"]);
-        $this->view->show("home.html", $this->data, $this->accion);
-    }
-}
-?>
-    ```
+el valor que recibe es XML o JSON 
+return = json o return = xml si no semanda nada es JSON 
 
-End
+
