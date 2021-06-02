@@ -38,13 +38,13 @@ class controllerUpdatecatalogo {
             }else{
                 $data["return"] = $this->var["path"]."catalogo/".$this->var["Dominio"];
             }
-            $data["tiempo"] = "3";
+            $data["tiempo"] = "1";
         }elseif(isset($cmdRegresar)){
             $data["isCorrect"] = TRUE;
             $data["tituloMensaje"] = "Regresando!";
             $data["Mensaje"] = "Regresando de forma correcta.";
             $data["return"] = $this->var["path"]."catalogo/".$this->var["Dominio"];
-            $data["tiempo"] = "3";
+            $data["tiempo"] = "1";
         }else{
             $data["isCorrect"] = FALSE;
             $data["tituloMensaje"] = "Error!!!";
@@ -58,7 +58,7 @@ class controllerUpdatecatalogo {
             }else{
                 $data["return"] = $this->var["path"]."catalogo/".$this->var["Dominio"];
             }
-            $data["tiempo"] = "3";
+            $data["tiempo"] = "1";
         }
         if($_COOKIE["idRol"]==2 && $this->var["Dominio"]=="user"){
             $data["return"] = $this->var["path"]."editar-perfil";

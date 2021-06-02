@@ -6,11 +6,6 @@ class ControllerColores extends Controller{
         parent::__construct($conf, $var, $acc); 
     }
     public function main() {
-        header("Access-Control-Allow-Origin: *");
-        header("Content-Type: application/json; charset=UTF-8");
-        header("Access-Control-Allow-Methods: GET");
-        header("Access-Control-Max-Age: 3600");
-        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
         foreach($this->var as $k => $v){
             $$k=$v;
         }
@@ -18,8 +13,32 @@ class ControllerColores extends Controller{
         $decoded = json_decode($rawdata);
         //var_dump($decoded);
         foreach (getallheaders() as $nombre => $valor) {
-            //echo "$nombre: $valor\n";
+            //echo  $nombre .'--'. $valor.PHP_EOL;
+            $$nombre = $valor;
         }
+        foreach ($_REQUEST as $nombre => $valor) {
+            //echo  $nombre .'--'. $valor.PHP_EOL;
+            $$nombre = $valor;
+        }
+        // --> Si no hay item definido
+        if(!isset($items)){
+            $items=6;
+            $fin_limit=6;
+        }else{
+            $fin_limit=$items;
+        }
+        if(!isset($page)){
+            $page=1;
+        }
+        // Valores por defaultpara  los limites 
+        $inicio_limit=0;
+        
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: ".$_SERVER['REQUEST_METHOD']);
+        header("Access-Control-Max-Age: 3600");
+        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+        
+       
         $dat = explode("/",$con);
         $error=TRUE;
         $success=FALSE;
@@ -38,6 +57,7 @@ class ControllerColores extends Controller{
                 $error=FALSE;
                 // --> Si borrar
                 if($_SERVER['REQUEST_METHOD'] == "DELETE" && $dd[1]==1){
+
                     indexModel::bd($this->conf)->deleteDominio("color",$dat[1]);
                     $mensaje = indexModel::bd($this->conf)->getMensajeApi("successDelete");
                     $array=array(
@@ -45,15 +65,29 @@ class ControllerColores extends Controller{
                         "message"=>$mensaje
                     );
                 }else{
-                    $colores = indexModel::bd($this->conf)->getDominio("color");
                     if($dat[1]>0){
-                        $colores = indexModel::bd($this->conf)->getDominio("color",$dat[1]);
+                        $colores = indexModel::bd($this->conf)->getSQL("SELECT * from color WHERE id= ".$dat[1]);
+                    }else{
+                        if($page>1){
+                            $inicio_limit=($page*$items)-$items;
+                        }
+                        $limit = " LIMIT $inicio_limit , $fin_limit";
+                        $sql = "SELECT * from color ".$limit;
+                        $sql2 = "SELECT count(*) as nr from color ";
+                        $colores = indexModel::bd($this->conf)->getSQL($sql );
+                        $total_elements = indexModel::bd($this->conf)->getSQL($sql2)[0];
+
+                        $number_of_pages = ceil($total_elements->nr  / $items);
+                       
                     }
                     $mensaje = indexModel::bd($this->conf)->getMensajeApi("success");
                     if(count($colores)>0){
                         $array=array(
                             "success"=>$success,
                             "data"=> $colores,
+                            "actual_page"=>$page,
+                            "number_of_pages"=>$number_of_pages,
+                            "total_elements"=>$total_elements->nr,
                             "message"=>$mensaje
                         );
                     }else{
@@ -75,7 +109,13 @@ class ControllerColores extends Controller{
             }
         }
         
-        indexModel::bd($this->conf)->setJsonV1($error,$array);
+        if($return=="json"){
+            indexModel::bd($this->conf)->setJsonV1($error,$array);
+        }else{
+            indexModel::bd($this->conf)->setXMLV1($error,$array);
+        }
+
+        
         
     }
 }   

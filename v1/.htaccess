@@ -5,7 +5,7 @@ RewriteCond %{REQUEST_FILENAME} !^(.+)\.gif$
 RewriteCond %{REQUEST_FILENAME} !^(.+)\.css$
 RewriteCond %{REQUEST_FILENAME} !^(.+)\.js$
 RewriteCond %{REQUEST_URI} !/(.*)\.
-RewriteRule ^(.+)$ index.php?con=$1 [L]
+RewriteRule ^(.+)$ index.php?con=$1 [QSA]
 
 #Comprimir
 #AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/x-javascript

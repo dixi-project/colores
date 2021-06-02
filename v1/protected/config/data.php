@@ -13,9 +13,9 @@ if($debug){
         'password' => 'JZ5Nb{q!.@63w',
         'folderControladores' => 'protected/controller/',
         'folderModelos' => 'protected/model/',
-        'folderVistas' => 'protected/views/',
-        'pathSite' => 'http://'.$_SERVER["SERVER_NAME"].'/colores/',
-        'pathCMSSite' => 'http://'.$_SERVER["SERVER_NAME"].'/colores/',
+        'folderVistas' => 'protected/views/', 
+        'pathSite' => 'http://'.$_SERVER["SERVER_NAME"].'/colores/v1/',
+        'pathCMSSite' => 'http://'.$_SERVER["SERVER_NAME"].'/colores/v1/',
         'design' => '1',   
         'timezone' => 'America/Mexico_City',
         'createby' => 'Create By Dixi Project'

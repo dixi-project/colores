@@ -55,6 +55,20 @@ class indexModel {
         exit();
     }
 
+
+    public function setXMLV1($error,$array){
+        $data = array(
+            "error"=>$error,
+            "version"=>"1",
+            "response"=>$array
+        );
+        header('Content-Type: text/xml');
+        $xml = new SimpleXMLElement('<root/>');
+        array_walk_recursive($data, array ($xml, 'addChild'));
+        print $xml->asXML();
+        exit();
+    }
+    
     public function desbloquearUsuario($id) {
         $sql = "UPDATE user SET status_id=1 WHERE id = " . $id;
         $reg = indexModel::bd($this->conf)->getSQL($sql);
