@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 02, 2021 at 02:27 PM
+-- Generation Time: Jun 02, 2021 at 03:58 PM
 -- Server version: 10.3.29-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -41,7 +41,15 @@ CREATE TABLE `color` (
 --
 
 INSERT INTO `color` (`id`, `name`, `color`, `pantone`, `year`) VALUES
-(3, 'Color 2', '#332bd6', '13-1107', 2020);
+(3, 'Color 2', '#332bd6', '13-1107', 2020),
+(4, 'asfasf', '#4c67bf', '13-1106', 2021),
+(5, 'asfasdf', '#6c8f66', '13-1106', 2021),
+(6, 'Sand Dollar', '#be4ec2', '13-1106', 2021),
+(7, 'José Luis Vieyra', '#2e9980', '13-1106', 2021),
+(8, 'COLOR 34', '#808765', '13-1106', 2021),
+(9, 'color 45', '#664220', '13-1106', 2021),
+(10, 'color 67', '#5867a3', '13-1106', 2021),
+(11, 'Color 55', '#867eb5', '13-1106', 2020);
 
 -- --------------------------------------------------------
 
@@ -256,7 +264,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `color`
 --
 ALTER TABLE `color`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `conf_field`
