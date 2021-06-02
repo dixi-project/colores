@@ -18,11 +18,9 @@ En este archivo se debera configurar las rutas y accesos a la base de datos
 
 5. En cuya ruta habra una carpeta por diseño nuevo implementado ejemplo diseño 1 estaria en //<domain>/<directory>/design/1
 
-    Nota: Aqui la ruta para descargar 3 diseños que ya se encuentran implmentados y que se pueden utilizar 
+    Nota: Aqui la ruta para descargar el diseños que ya se encuentran implmentados y que se pueden utilizar 
 
     https://framework.dixi-project./design/1.zip
-    https://framework.dixi-project./design/2.zip
-    https://framework.dixi-project./design/3.zip
 
 6. Para crear un módulo nuevo habra que agregar un archivo en la siguiente ruta //<domain>/<directory>/protected/controller/ con el siguiente formato 
 
@@ -67,8 +65,6 @@ In this file you must configure the routes and accesses to the database
     > Note: Here is the path to download 3 designs that are already implemented and that can be used
 
     https://framework.dixi-project./design/1.zip
-    https://framework.dixi-project./design/2.zip
-    https://framework.dixi-project./design/3.zip
 
 6. To create a new module you will have to add a file in the following path // <domain> / <directory> / protected / controller / with the following format
 
